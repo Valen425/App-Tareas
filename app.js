@@ -49,10 +49,28 @@ async function configurarFormulario() {
 
 function mostrarTareas(tareas) {
   const contenedorTareas = document.getElementById
-  ("lista-tareas");
-  listaTareas.innerHTML = ""; // Limpiar la lista antes de mostrar las ta
-}
+  ("contenedor-tareas");
 
+  contenedorTareas.innerHTML = ""; 
+
+  if (!tareas || tareas.length === 0) {
+    contenedorTareas.innerHTML = "<p>No tienes tareas.</p>";
+    return;
+  }
+
+  frutas = ["manzana", "naranja", "plátano", "fresa", "kiwi"];
+
+  tareas.forEach((tarea) => {
+    const div = document.createElement("div");
+    div.className = "tarea";
+    div.innerHTML = `
+      <strong>${tarea.titulo}</strong>
+      <small>${tarea.descripcion || ""}</small><br />
+    `;
+    contenedorTareas.appendChild(div);
+  })
+
+}
 
 
 // Ejecutar al cargar la página
@@ -65,5 +83,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   configurarFormulario();
 
-  const tareas = obtenerTareas();
+  const tareas = await obtenerTareas();
+
+  mostrarTareas(tareas);
 });
