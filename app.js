@@ -11,7 +11,7 @@ async function crearTarea(titulo, descripcion = null, fecha_limite = null) {
     .insert([{ titulo, descripcion, fecha_limite }]);
 
   if (error) {
-    console.log("Error al crear la tarea: " + error);
+    console.log("Error al crear la tarea: " + error.message);
     return null;
   } else {
     console.log("Tarea registrada exitosamente");
@@ -20,12 +20,21 @@ async function crearTarea(titulo, descripcion = null, fecha_limite = null) {
   return data;
 }
 
+function mostrarTareas(tareas) {
+  const contenedorTareas = document.getElementById("lista-tareas");
+
+
+
+}
+
 async function configurarFormulario() {
   const formulario = document.getElementById("formulario")
   formulario.onsubmit = async function (e) {
-    const titulo= formulario.titulo.value
-    const descripcion= formulario.descripcion.value
-    const fecha_limite= formulario.fecha_limite.value
+    e.preventDefault();
+
+    const titulo = formulario.titulo.value
+    const descripcion = formulario.descripcion.value
+    const fecha_limite = formulario.fecha_limite.value
     crearTarea(titulo, descripcion, fecha_limite)
   }
   
@@ -42,6 +51,8 @@ window.addEventListener("DOMContentLoaded", async () => {
     return;
   } else
   {console.log("supabase cargado exitosamente")}
-configurarFormulario();
-  console.log("Prueba Valentino")
+
+  configurarFormulario();
+
+  const tareas = 
 });
