@@ -43,5 +43,5 @@ window.addEventListener("DOMContentLoaded", async () => {
   } else
   {console.log("supabase cargado exitosamente")}
 configurarFormulario();
-  console.log("Prueba")
+  console.log("Prueba Valentino")
 });
