@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta chartset="UTF-8" />
+    <title>APP TAREAS</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <header class="encabezado">
+      <h1>LISTA DE TAREAS</h1>
+      <p>Esta app permite agregar, eliminar, editar y ver todas tus tareas.</p>
+    </header>
+
+    <main>
+      <div class="formulario-agregar">
+        <form class="formulario-tarea" id="formulario">
+          <label for="titulo"> Título </label>
+          <input
+            id="titulo"
+            name="titulo"
+            value=""
+            placeholder="Ingrese el titulo de su tarea"
+          />
+
+          <label for="descripcion"> Detalles de la tarea </label>
+          <textarea id="descripcion" name="descripcion" value=""> </textarea>
+
+          <label for="fecha_limie"> ¿Hasta cuándo puedes hacerlo? </label>
+          <input
+            id="fecha_limie"
+            type="date"
+            name="fecha_limie"
+            value=""
+            placeholder="Ingrese la fecha límite"
+          />
+
+          <button type="submit" class="boton-registrar">Registrar tarea</button>
+        </form>
+      </div>
+    </main>
+
+    <footer></footer>
+
+    <!-- Supabase SDK -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.50.5/dist/umd/supabase.min.js"></script>
+    <script src="app.js"></script>
+    
+  </body>
+</html>
+

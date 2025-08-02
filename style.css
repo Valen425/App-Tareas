@@ -1,0 +1,30 @@
+html {
+  font-family: sans-serif, Arial, Helvetica;
+}
+
+.encabezado {
+  color: #0b5887;
+  text-align: center;
+  margin-top: 80px;
+}
+
+.formulario-agregar {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  max-width: 400px;
+}
+
+.boton-registrar {
+  background-color: #0b5887;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  margin-top: 15px;
+}
+
+.formulario-tarea {
+  display: flex;
+  flex-direction: column;
+}
