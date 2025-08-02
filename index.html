@@ -26,11 +26,11 @@
           <label for="descripcion"> Detalles de la tarea </label>
           <textarea id="descripcion" name="descripcion" value=""> </textarea>
 
-          <label for="fecha_limie"> ¿Hasta cuándo puedes hacerlo? </label>
+          <label for="fecha_limite"> ¿Hasta cuándo puedes hacerlo? </label>
           <input
-            id="fecha_limie"
+            id="fecha_limite"
             type="date"
-            name="fecha_limie"
+            name="fecha_limite"
             value=""
             placeholder="Ingrese la fecha límite"
           />
@@ -38,7 +38,13 @@
           <button type="submit" class="boton-registrar">Registrar tarea</button>
         </form>
       </div>
+
+      <div class="tareas-contenedor">
+        <h2>Tareas pendientes</h2>
+        <div id="lista-tareas"></div>
+      </div>
     </main>
+
 
     <footer></footer>
 
