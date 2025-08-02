@@ -49,8 +49,32 @@ async function configurarFormulario() {
 
 function mostrarTareas(tareas) {
   const contenedorTareas = document.getElementById
-  ("lista-tareas");
-  listaTareas.innerHTML = ""; // Limpiar la lista antes de mostrar las ta
+  ("contenedor-tareas");
+
+  contenedorTareas.innerHTML = ""; 
+
+  if (!tareas || tareas.length === 0) {
+    contenedorTareas.innerHTML = "<p>No hay tareas disponibles.</p>";
+    return;
+  }
+
+  tareas.forEach(tarea => {
+    const div = document.createElement("div");
+    div.className = "tarea";
+    div.innerHTML = `
+      <strong>${tarea.titulo}</strong>
+      <small>${tarea.descripcion}</small><br />
+    `;
+    contenedorTareas.appendChild(div);
+  });
+    
+
+
+
+
+
+
+
 }
 
 
