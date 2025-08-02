@@ -5,7 +5,7 @@ const urlSupabase="https://tisvyezlhgyoymdnosoe.supabase.co"
 // Crear cliente de Supabase usando la variable global del CDN
 const supabase = window.supabase.createClient(urlSupabase, claveSupabase);
 
-async function crearTarea(titulo, descripcion = null, fecha_limite = null) {
+async function crearTarea(titulo, descripcion = "Descripción no especificada.", fecha_limite = null) {
   const { data, error } = await supabase
     .from("tareas")
     .insert([{ titulo, descripcion, fecha_limite }]);
@@ -20,22 +20,25 @@ async function crearTarea(titulo, descripcion = null, fecha_limite = null) {
   return data;
 }
 
-function mostrarTareas(tareas) {
-  const contenedorTareas = document.getElementById("lista-tareas");
-
-
-
+async function obtenerTareas() {
+  const { data, error } = await supabase.from("tareas").select("*");
+  if (error) {
+    console.error("Error al obtener las tareas: " + error.message);
+    return [];
+  } else {
+    console.log("Tareas obtenidas exitosamente" + data);
+    return data;
+  }
 }
 
 async function configurarFormulario() {
   const formulario = document.getElementById("formulario")
   formulario.onsubmit = async function (e) {
     e.preventDefault();
-
-    const titulo = formulario.titulo.value
-    const descripcion = formulario.descripcion.value
-    const fecha_limite = formulario.fecha_limite.value
-    crearTarea(titulo, descripcion, fecha_limite)
+    const titulo = formulario.elements["titulo"].value;
+    const descripcion = formulario.elements["descripcion"].value;
+    const fecha_limite = formulario.elements["fecha_limite"].value;
+    crearTarea(titulo, descripcion, fecha_limite);
   }
   
 
@@ -43,6 +46,14 @@ async function configurarFormulario() {
 
 
 }
+
+function mostrarTareas(tareas) {
+  const contenedorTareas = document.getElementById
+  ("lista-tareas");
+  listaTareas.innerHTML = ""; // Limpiar la lista antes de mostrar las ta
+}
+
+
 
 // Ejecutar al cargar la página
 window.addEventListener("DOMContentLoaded", async () => {
@@ -54,5 +65,5 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   configurarFormulario();
 
-  const tareas = 
+  const tareas = obtenerTareas();
 });
