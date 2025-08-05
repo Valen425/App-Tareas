@@ -23,6 +23,11 @@ html {
   height: 30px;
   margin-top: 15px;
 }
+.boton-registrar:hover {
+  background-color: #06629b;
+  cursor: pointer;
+  scale: 1.01;
+}
 
 .formulario-tarea {
   display: flex;
@@ -37,4 +42,13 @@ html {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   border-radius: 4px;
   position: relative;
+}
+
+.completada {
+  color: green;
+  font-weight: bold;
+}
+
+.pendiente {
+  color: #999;
 }
