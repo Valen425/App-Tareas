@@ -28,7 +28,32 @@ html {
   cursor: pointer;
   scale: 1.01;
 }
-
+.boton-eliminar {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  margin-top: 15px;
+}
+.boton-eliminar:hover {
+  background-color: #df4415;
+  cursor: pointer;
+  scale: 1.01;
+}
+.boton-editar {
+  background-color: #ffc107;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  margin-top: 15px;
+}
+.boton-editar:hover {
+  background-color: #e6a700;
+  cursor: pointer;
+  scale: 1.01;
+}
 .formulario-tarea {
   display: flex;
   flex-direction: column;

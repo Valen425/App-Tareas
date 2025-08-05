@@ -37,6 +37,19 @@ async function obtenerTareas() {
   }
 }
 
+//Eliminar una tarea por ID
+async function eliminarTarea(id) {
+  const { error } = await supabase.from("tareas").delete().eq("id", id);
+  if (error) {
+    alert("Error al eliminar la tarea: " + error.message);
+  } else {
+    alert("Tarea eliminada exitosamente");
+    const tareas = await obtenerTareas();
+    mostrarTareas(tareas);
+  }
+  return true;
+}
+
 async function configurarFormulario() {
   const formulario = document.getElementById("formulario")
   formulario.onsubmit = async function (e) {
@@ -68,11 +81,6 @@ function mostrarTareas(tareas) {
     const div = document.createElement("div");
     div.className = "tarea";
     div.innerHTML = `
-  
-
-
-
-
       <strong>${tarea.titulo}</strong>
       <small>${tarea.descripcion || ""}</small><br />
 
@@ -81,11 +89,28 @@ function mostrarTareas(tareas) {
       </span>
 
       <small>${tarea.fecha_limite || ""}</small>
+
+      <button type="button" class="boton-eliminar" data-id="${
+        tarea.id
+      }">Eliminar</button>
+      
+       <button type="button" class="boton-editar" data-id="${
+        tarea.id
+      }">Editar</button>
+
     `;
 
     contenedorTareas.appendChild(div);
+    
   })
-
+  contenedorTareas.querySelectorAll(".boton-eliminar").forEach((boton) => {
+    boton.onclick = async function () {
+      const id = parseInt(boton.getAttribute("data-id"));
+      if (confirm("¿Estás seguro de eliminar esta tarea?")) {
+        await eliminarTarea(id);
+      }
+    };
+  });
 }
 
 
