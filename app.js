@@ -11,7 +11,7 @@ async function crearTarea(titulo, descripcion = "Descripción no especificada.",
     .insert([{ titulo, descripcion, fecha_limite }]);
 
   if (error) {
-    console.log("Error al crear la tarea: " + error);
+    console.log("Error al crear la tarea: " + error.message);
     return null;
   } else {
     console.log("Tarea registrada exitosamente");
@@ -54,29 +54,23 @@ function mostrarTareas(tareas) {
   contenedorTareas.innerHTML = ""; 
 
   if (!tareas || tareas.length === 0) {
-    contenedorTareas.innerHTML = "<p>No hay tareas disponibles.</p>";
+    contenedorTareas.innerHTML = "<p>No tienes tareas.</p>";
     return;
   }
 
-  tareas.forEach(tarea => {
+  frutas = ["manzana", "naranja", "plátano", "fresa", "kiwi"];
+
+  tareas.forEach((tarea) => {
     const div = document.createElement("div");
     div.className = "tarea";
     div.innerHTML = `
       <strong>${tarea.titulo}</strong>
-      <small>${tarea.descripcion}</small><br />
+      <small>${tarea.descripcion || ""}</small><br />
     `;
     contenedorTareas.appendChild(div);
-  });
-    
-
-
-
-
-
-
+  })
 
 }
-
 
 
 // Ejecutar al cargar la página
@@ -89,5 +83,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   configurarFormulario();
 
-  const tareas = obtenerTareas();
+  const tareas = await obtenerTareas();
+
+  mostrarTareas(tareas);
 });
