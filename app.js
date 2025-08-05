@@ -64,8 +64,19 @@ function mostrarTareas(tareas) {
     const div = document.createElement("div");
     div.className = "tarea";
     div.innerHTML = `
+  
+
+
+
+
       <strong>${tarea.titulo}</strong>
       <small>${tarea.descripcion || ""}</small><br />
+
+      <span class="${tarea.completada ? "completada" : "pendiente"}">
+        ${tarea.completada ? "✔ Completada" : "⏳ Pendiente"}
+      </span>
+
+      <small>${tarea.fecha_limite || ""}</small>
     `;
     contenedorTareas.appendChild(div);
   })
