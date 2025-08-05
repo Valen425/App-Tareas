@@ -24,10 +24,11 @@ html {
   margin-top: 15px;
 }
 .boton-registrar:hover {
-  background-color: #0a4f7a;
+  background-color: #06629b;
   cursor: pointer;
-  scale: 1.05;
+  scale: 1.01;
 }
+
 .formulario-tarea {
   display: flex;
   flex-direction: column;
@@ -49,11 +50,5 @@ html {
 }
 
 .pendiente {
-  color: red;
-  font-weight: bold;
+  color: #999;
 }
-
-
-
-
-
